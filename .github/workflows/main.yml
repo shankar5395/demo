@@ -20,12 +20,13 @@ jobs:
         chmod 600 ~/.ssh/deploy_key_new.pem
         ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
 
+    - name: Verify SSH Configuration
+      run: |
+        ssh -i ~/.ssh/deploy_key_new.pem -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "echo SSH connection successful"
+
     - name: Deploy files to server
       run: |
-        # Define the files or directories you want to deploy
         FILES_TO_DEPLOY="README.md"
-        
-        # Deploy each file or directory
         for file in $FILES_TO_DEPLOY; do
           scp -i ~/.ssh/deploy_key_new.pem -r $file ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/home/ubuntu/
         done
