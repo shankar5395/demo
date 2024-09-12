@@ -17,7 +17,7 @@ jobs:
       run: |
         mkdir -p ~/.ssh
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key_new.pem
-        chmod 600 ~/.ssh/deploy_key_new.pem
+        chmod 400 ~/.ssh/deploy_key_new.pem
         ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
 
     - name: Verify SSH Configuration
