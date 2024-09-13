@@ -1,4 +1,4 @@
-name: Deploy File via SS
+name: Deploy File via SSh
 
 on:
   push:
