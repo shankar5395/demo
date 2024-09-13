@@ -28,5 +28,5 @@ jobs:
       run: |
         FILES_TO_DEPLOY="README.md"
         for file in $FILES_TO_DEPLOY; do
-          scp -i ~/.ssh/deploy_key.pem -r $file ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}: /home/ubuntu/
+          scp -i ~/.ssh/deploy_key.pem -r $file ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/home/ubuntu/
         done
