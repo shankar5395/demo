@@ -16,13 +16,13 @@ jobs:
     - name: Set up SSH
       run: |
         mkdir -p ~/.ssh
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key_new.pem
-        chmod 400 ~/.ssh/deploy_key_new.pem
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_KEy.pem
+        chmod 400 ~/.ssh/deploy_KEy.pem
         ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
 
     - name: Verify SSH Configuration
       run: |
-        ssh -i ~/.ssh/deploy_key_new.pem -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "echo SSH connection successful"
+        ssh -i ~/.ssh/deploy_KEy.pem -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "echo SSH connection successful"
 
     - name: Deploy files to server
       run: |
