@@ -25,7 +25,7 @@ jobs:
 
     - name: Copy test.txt to the server
       run: |
-        sudo scp -o StrictHostKeyChecking=no test.txt $REMOTE_USER@$REMOTE_HOST:/path/to/destination/
+        sudo scp -o StrictHostKeyChecking=no test.txt $REMOTE_USER@$REMOTE_HOST:/home/ubuntu
 
       # Use environment variables for SSH user and server address
       env:
